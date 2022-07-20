@@ -1,0 +1,29 @@
+<div id="login">
+     <h3 class="title">Welcome To Larat</h3>
+     <form [formGroup]="loginForm" (ngSubmit)="submitFormLogin(loginForm)" id="form">
+          <label for="username-login"> Email <span class="lable-ast">*</span></label>
+          <nz-input-group [nzPrefix]="prefixTemplateUser1">
+               <input formControlName="username" type="email" id="username-login" nz-input autocomplete="off" />
+          </nz-input-group>
+          <ng-template #prefixTemplateUser1>
+               <img src="../../../../../assets/img/auth/icon/mail.svg" alt="user icon">
+          </ng-template>
+
+          <label for="password"> Password <span class="lable-ast">*</span></label>
+          <nz-input-group [nzPrefix]="prefixTemplateUser2" [nzSuffix]="suffixTemplate">
+               <input formControlName="password"  [type]="passwordVisible ? 'text' : 'password'" id="password" nz-input autocomplete="off" />
+          </nz-input-group>
+          <ng-template #prefixTemplateUser2>
+               <img src="../../../../../assets/img/auth/icon/lock.svg" alt="lock icon">
+          </ng-template>
+          <ng-template #suffixTemplate>
+               <i nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                    (click)="passwordVisible = !passwordVisible"></i>
+          </ng-template>
+          <p routerLink="/auth/reset-password" class="forget">Forgot your password?</p>
+     <button class="btn mb-4 btn-main" type="submit" [disabled]="loginForm?.invalid">Sign In</button>
+
+     </form>
+     <button class="btn btn-route w-100" type="button" routerLink="/auth/signUp">You don't have an account? <span class="route">new registration</span></button>
+
+</div>

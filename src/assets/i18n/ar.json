@@ -1,0 +1,16 @@
+{
+  "menu": {
+    "home": "الصفحة الرئيسية",
+    "properties":"العقارات",
+    "offers": "العروض والحجوزات",
+    "forms":"الطلبات",
+    "employees": "الموظفين",
+    "settings":"الاعدادات",
+    "search": "بحث"
+  },
+  "propertyTypes": {
+    "villa": "فيلا",
+    "land": "أرض",
+    "choose": "اختر نوع العقار"
+  }
+}

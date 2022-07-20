@@ -1,0 +1,26 @@
+#navbar-main{
+     background-color: var(--main-color);
+     color: var(--main-color)
+}
+.media{
+     .media-body{
+     text-align: center;
+     font-weight: 400;
+     font-size: 12px;
+     margin-inline-end: 8px;
+     line-height: 12px;
+     color: var(--white-color);
+     span:first-child{
+          padding-block-end: 5px;
+     }
+     span:last-child{
+          font-size: 9px;
+          line-height: 9px;
+          color: var(--background-color);
+     }
+     
+}
+i{
+          padding-inline-start: 8px;
+     }
+}

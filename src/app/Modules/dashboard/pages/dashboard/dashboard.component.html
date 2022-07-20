@@ -1,0 +1,86 @@
+<div class="image-container">
+    <img src="assets/img/theme/img-1-1000x600.jpg" class="img"/>
+    <div class="search-tab">
+
+        <div class="search-tabs-container">
+            <div class="col-10 h-100">
+                <div class="d-flex flex-wrap h-100">
+                    <div class="col-3 border-right-light search-text-container"> What are you looking for</div>
+                    <div class="col-3 border-right-light search-filter-container">
+                        <div>
+                            <div class="text-x-large text-with-icon"><i class="fas fa-location-dot text-xl"></i>Location
+                            </div>
+                            <div class="text-gray text-xs">Choose Location</div>
+                        </div>
+                        <div class="icon-container"><i class="fas fa-search text-lg"></i></div>
+                    </div>
+                    <div class="col-3 border-right-light search-filter-container">
+                        <div>
+                            <div class="text-x-large text-with-icon"><app-icon size="md" icon="building.svg"></app-icon>Property
+                                Type
+                            </div>
+                            <div class="text-gray text-xs">{{selectedPropertyType ? 'propertyTypes.' + selectedPropertyType : 'propertyTypes.choose' | translate}}
+                            </div>
+                        </div>
+                        <div class="icon-container"><app-icon icon="dropdown.svg" size="sm" [matMenuTriggerFor]="propertyType"></app-icon>
+                            <mat-menu #propertyType="matMenu" xPosition="before">
+                                <button mat-menu-item
+                                        (click)="selectPropertyType('villa')">{{'propertyTypes.villa' | translate}}</button>
+                                <button mat-menu-item
+                                        (click)="selectPropertyType('land')">{{'propertyTypes.land' | translate}}</button>
+                            </mat-menu>
+                        </div>
+                    </div>
+                    <div class="col-3 search-filter-container">
+                        <div>
+                            <div class="text-x-large text-with-icon"><app-icon size="md" icon="building.svg"></app-icon>Type
+                            </div>
+                            <div class="text-gray text-xs">For Rent</div>
+                        </div>
+                        <div class="icon-container">
+                            <app-icon icon="dropdown.svg" size="sm"></app-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 search-btn">
+                Search
+            </div>
+        </div>
+    </div>
+    <div class="flexible-search-container">
+        <div class="icon-container mobile-search-icon" (click)="openDialog()">
+            <i class="fa-solid fa-search text-xl"></i></div>
+    </div>
+</div>
+<div class="page-details">
+    <div class="text-xl title-with-yellow mt-4 font-weight-bolder">Search By Property Type</div>
+    <div class="row mt-4">
+        <div class="col-12 col-md-4" *ngFor="let button of propertyTypeButtons">
+            <app-button-with-icon [button]="button"></app-button-with-icon>
+        </div>
+    </div>
+    <div class="text-xl title-with-yellow mt-4 font-weight-bolder">Search By AD Type</div>
+    <div class="row mt-4">
+        <div class="col-12 col-md-4" *ngFor="let button of adTypeButtons">
+            <app-button-with-icon [button]="button"></app-button-with-icon>
+        </div>
+    </div>
+    <div class="text-xl title-with-yellow mt-6 font-weight-bolder">New Properties For Sale</div>
+    <div class="row mt-4">
+        <div class="col-12 col-md-3" *ngFor="let property of propertiesForSale">
+            <app-properties-card-list
+                    [property]="property"
+            ></app-properties-card-list>
+        </div>
+    </div>
+
+    <div class="text-xl title-with-yellow mt-6 font-weight-bolder">New Properties For Rent</div>
+    <div class="row mt-4">
+        <div class="col-12 col-md-3" *ngFor="let property of propertiesForRent">
+            <app-properties-card-list
+                    [property]="property"
+            ></app-properties-card-list>
+        </div>
+    </div>
+</div>

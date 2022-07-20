@@ -1,0 +1,22 @@
+<div class="header">
+  <div class="container-fluid">
+    <div class="header-body">
+      <app-add-details
+        *ngIf="page === 'AD_DETAILS'"
+        (selectedPage)="selectPage($event)"
+      ></app-add-details>
+      <app-add-photos
+        *ngIf="page === 'ADD_PHOTO'"
+        (selectedPage)="selectPage($event)"
+      ></app-add-photos>
+      <app-add-property-details
+        *ngIf="page === 'ADD_PROPERY'"
+        (selectedPage)="selectPage($event)"
+      ></app-add-property-details>
+      <app-add-property-review
+        *ngIf="page === 'ADD_REVIEW'"
+        (selectedPage)="selectPage($event)"
+      ></app-add-property-review>
+    </div>
+  </div>
+</div>

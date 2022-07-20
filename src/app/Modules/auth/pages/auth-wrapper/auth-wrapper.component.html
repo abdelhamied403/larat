@@ -1,0 +1,18 @@
+<section id="auth-layout">
+     <div class="row justify-content-center h-100vh">
+          <div class="col-md-6">
+               <div class="carousel-wrapper">
+                    <img src="../../../../../assets/img/auth/sign.svg" alt="wrapper">
+                    <h3 class="titel-carousel">Easily manage your properties and orders with larat</h3>
+                    <nz-carousel [nzEffect]="'scrollx'">
+                         <div nz-carousel-content *ngFor="let item of contentCarousel">
+                              <p class="content-carousel">{{item}} </p>
+                         </div>
+                    </nz-carousel>
+               </div>
+          </div>
+          <div class="col-md-6">
+               <router-outlet></router-outlet>
+          </div>
+     </div>
+</section>

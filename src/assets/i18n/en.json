@@ -1,0 +1,16 @@
+{
+  "menu": {
+    "home": "Home",
+    "properties":"Property",
+    "offers": "Offers & Reservation",
+    "forms":"Requests",
+    "employees": "Employee",
+    "settings":"Settings",
+    "search": "Search"
+  },
+  "propertyTypes": {
+    "villa": "Villa",
+    "land": "Land",
+    "choose": "Choose Property Type"
+  }
+}

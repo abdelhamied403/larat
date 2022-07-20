@@ -1,0 +1,56 @@
+<div class="card">
+    <div class="card-header" style="padding: 0.75rem 0.75rem">
+        <img
+                alt="Image placeholder"
+                class="card-img-top"
+                src="assets/img/theme/img-1-1000x900.jpg"
+        />
+
+        <div class="card-img-overlay d-flex p-3 justify-content-between">
+            <div class="h2 card-title card-title-start">
+                <a class="btn btn-md px-3 text-white font-weight-bolder border-radius-large"
+                   [ngClass]="{'btn-second-color': property.contractType ==='sale', 'btn-primary': property.contractType === 'rent'}">{{property.contractType === 'rent' ? 'For Rent' : 'For Sale'}}</a>
+            </div>
+
+            <div class="h2 card-title text-black card-title-end">
+                <a class="btn btn-sm bg-white d-flex justify-content-center align-items-center font-weight-bolder text-lg square-sm">
+                    <i class="fa-heart"
+                       [ngClass]="{'fa-solid text-second-color': property.liked, 'fa-regular text-black': !property.liked}"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body" style="padding: 0">
+        <div class="px-4 py-2 border-bottom">
+            <div class="text-gray text-xs">{{property.date | date}}</div>
+            <div class="text-second-color text-md d-flex"><span style="margin-inline-end: 4px"
+                                                                class="fas fa-location-dot"></span>{{property.location}}
+            </div>
+            <div class="d-flex gap-md align-items-end mt-1 mb-3">
+                <div class="text-second-color text-xl mt-2 font-weight-bold mt-2">{{property.price | currency: 'SR': 'symbol': '3.0'}}</div>
+                <div class="text-gray text-xs" *ngIf="property.negotiable">Negotiable <span
+                        class="fas fa-certificate text-green"></span></div>
+            </div>
+            <div class="d-flex my-2">
+                <div class="d-flex text-md align-items-center"
+                     *ngFor="let i of [{name: property.type,icon: 'building.svg'}, {name: property.area,icon: 'measurement.svg'}, {name: property.rooms,icon: 'rooms.svg'}]; let last = last;">
+                    <app-icon style="margin-inline-end: 4px" [icon]="i.icon" size="sm"></app-icon>
+                    {{i.name}}
+                    <div *ngIf="!last" class="mx-3">|</div>
+                </div>
+            </div>
+        </div>
+        <div class="px-4 py-3 d-flex justify-content-between">
+            <div class="d-flex gap-md">
+                <div class="d-flex justify-content-center align-items-center bg-second-color square-md rounded-circle">
+                    <span class="fas fa-user text-xl text-white"></span></div>
+                <div>
+                    <div class="text-gray text-xs">Creation by</div>
+                    <div class="text-black font-weight-bolder">{{property.createdBy}}</div>
+                </div>
+            </div>
+            <div class="btn btn-main square-md d-flex justify-content-center align-items-center "><span
+                    class="fas fa-phone"></span></div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,634 @@
+<app-add-property-header
+  [headerItemClass]="propertyHeader"
+></app-add-property-header>
+
+<mat-card>
+  <!-- <app-dropdown [options]="adTypeList"></app-dropdown> -->
+  <form [formGroup]="addPropertyForm" (ngSubmit)="onSubmit()">
+    <div class="card-body">
+      <div class="row align-items-center">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="form-control-label"
+              >{{ propertyLabel }} <span style="color: tomato">*</span>
+            </label>
+            <select
+              class="form-control custom-form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.propertyType.errors }"
+              formControlName="propertyType"
+            >
+              <option
+                *ngFor="let property of propertyTypeList; let i = index"
+                [selected]="properySelectedValue"
+                [value]="property.constant"
+              >
+                {{ property.name }}
+              </option>
+            </select>
+            <div
+              *ngIf="submitted && f.propertyType.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.propertyType.errors.required">
+                <b> Property type is required </b>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="form-control-label">
+              Ad Type <span style="color: tomato">*</span>
+            </label>
+            <select
+              class="form-control custom-form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.adType.errors }"
+              formControlName="adType"
+            >
+              <option
+                *ngFor="let option of adTypeList; let i = index"
+                [selected]="properySelectedValue"
+                [value]="option.key"
+              >
+                {{ option.value }}
+              </option>
+            </select>
+            <div *ngIf="submitted && f.adType.errors" class="invalid-feedback">
+              <div *ngIf="f.adType.errors.required">
+                <b> Ad type is required </b>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label">
+              Number Of Room <span style="color: tomato">*</span>
+            </label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend ">
+                <span
+                  [ngClass]="{
+                    'is-invalid': submitted && f.numberOfRoom.errors
+                  }"
+                  class="input-group-text custom-form-control"
+                  style="cursor: pointer; font-weight: bold; color: tomato"
+                  >-</span
+                >
+              </div>
+              <input
+                type="text"
+                placeholder="minimum 1 max 50"
+                class="form-control custom-form-control"
+                formControlName="numberOfRoom"
+                maxlength="2"
+                digitOnly
+                [ngClass]="{ 'is-invalid': submitted && f.numberOfRoom.errors }"
+              />
+              <div class="input-group-append">
+                <span
+                  [ngClass]="{
+                    'is-invalid': submitted && f.numberOfRoom.errors
+                  }"
+                  class="input-group-text custom-form-control"
+                  style="cursor: pointer; font-weight: bold; color: green"
+                  >+</span
+                >
+              </div>
+              <div
+                *ngIf="submitted && f.numberOfRoom.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.numberOfRoom.errors.required">
+                  <b> Number of Room is required </b>
+                </div>
+                <div *ngIf="f.numberOfRoom.errors.pattern">
+                  <b>Number Of Room must be minimun 1 maximum 50</b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label">
+              Number Of Bathroom <span style="color: tomato">*</span>
+            </label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span
+                  [ngClass]="{
+                    'is-invalid': submitted && f.numberOfBathroom.errors
+                  }"
+                  class="input-group-text custom-form-control"
+                  style="cursor: pointer; font-weight: bold; color: tomato"
+                  >-</span
+                >
+              </div>
+              <input
+                type="text"
+                placeholder="minimum 1 max 50"
+                class="form-control"
+                formControlName="numberOfBathroom"
+                maxlength="2"
+                digitOnly
+                [ngClass]="{
+                  'is-invalid': submitted && f.numberOfBathroom.errors
+                }"
+              />
+              <div class="input-group-append">
+                <span
+                  [ngClass]="{
+                    'is-invalid': submitted && f.numberOfBathroom.errors
+                  }"
+                  class="input-group-text custom-form-control"
+                  style="cursor: pointer; font-weight: bold; color: green"
+                  >+</span
+                >
+              </div>
+              <div
+                *ngIf="submitted && f.numberOfBathroom.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.numberOfBathroom.errors.required">
+                  <b> Number of Bathroom is required </b>
+                </div>
+                <div *ngIf="f.numberOfBathroom.errors.pattern">
+                  <b>Number Of Room must be minimun 1 maximum 50</b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label ">
+              Number Of Reception <span style="color: tomato">*</span>
+            </label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span
+                  [ngClass]="{
+                    'is-invalid': submitted && f.numberOfReception.errors
+                  }"
+                  class="input-group-text custom-form-control"
+                  style="cursor: pointer; font-weight: bold; color: tomato"
+                  >-</span
+                >
+              </div>
+              <input
+                type="text"
+                placeholder="minimum 1 max 50"
+                class="form-control"
+                formControlName="numberOfReception"
+                maxlength="2"
+                digitOnly
+                [ngClass]="{
+                  'is-invalid': submitted && f.numberOfReception.errors
+                }"
+              />
+              <div class="input-group-append">
+                <span
+                  [ngClass]="{
+                    'is-invalid': submitted && f.numberOfReception.errors
+                  }"
+                  class="input-group-text custom-form-control"
+                  style="cursor: pointer; font-weight: bold; color: green"
+                  >+</span
+                >
+              </div>
+              <div
+                *ngIf="submitted && f.numberOfReception.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.numberOfReception.errors.required">
+                  <b> Number of receptionis required </b>
+                </div>
+                <div *ngIf="f.numberOfReception.errors.pattern">
+                  <b>Number Of receptionis must be minimun 1 maximum 50</b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label">
+              Street width <span style="color: tomato">*</span>
+            </label>
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                placeholder="minimum 1 maximum infinite"
+                class="form-control custom-form-control"
+                formControlName="streetWidth"
+                digitOnly
+                [ngClass]="{ 'is-invalid': submitted && f.streetWidth.errors }"
+              />
+              <div class="input-group-append">
+                <span
+                  [ngClass]="{
+                    'is-invalid': submitted && f.streetWidth.errors
+                  }"
+                  class="input-group-text custom-form-control"
+                  style="cursor: pointer; font-weight: bold"
+                  >M</span
+                >
+              </div>
+              <div
+                *ngIf="submitted && f.streetWidth.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.streetWidth.errors.required">
+                  <b> Street width is Required </b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label">
+              Area <span style="color: tomato">*</span>
+            </label>
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                placeholder="minimum 1 maximum infinite"
+                class="form-control custom-form-control"
+                formControlName="area"
+                digitOnly
+                [ngClass]="{ 'is-invalid': submitted && f.area.errors }"
+              />
+              <div class="input-group-append">
+                <span
+                  [ngClass]="{
+                    'is-invalid': submitted && f.area.errors
+                  }"
+                  class="input-group-text custom-form-control"
+                  style="cursor: pointer; font-weight: bold"
+                  >M2</span
+                >
+              </div>
+              <div *ngIf="submitted && f.area.errors" class="invalid-feedback">
+                <div *ngIf="f.area.errors.required">
+                  <b> Area is Required </b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label">
+              Finish Type <span style="color: tomato">*</span>
+            </label>
+            <select
+              class="form-control custom-form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.finishType.errors }"
+              formControlName="finishType"
+            >
+              <option
+                *ngFor="let option of finishTypeList; let i = index"
+                [selected]="properySelectedValue"
+                [value]="option.key"
+              >
+                {{ option.value }}
+              </option>
+            </select>
+            <div
+              *ngIf="submitted && f.finishType.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.finishType.errors.required">
+                <b> Finish Type is required </b>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label">
+              Floor Number <span style="color: tomato">*</span>
+            </label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span
+                  [ngClass]="{
+                    'is-invalid': submitted && f.floorNumber.errors
+                  }"
+                  class="input-group-text custom-form-control"
+                  style="cursor: pointer; font-weight: bold; color: tomato"
+                  >-</span
+                >
+              </div>
+              <input
+                type="text"
+                placeholder="minimum 1 max 50"
+                class="form-control"
+                formControlName="floorNumber"
+                maxlength="2"
+                digitOnly
+                [ngClass]="{ 'is-invalid': submitted && f.floorNumber.errors }"
+              />
+              <div class="input-group-append">
+                <span
+                  [ngClass]="{
+                    'is-invalid': submitted && f.floorNumber.errors
+                  }"
+                  class="input-group-text custom-form-control"
+                  style="cursor: pointer; font-weight: bold; color: green"
+                  >+</span
+                >
+              </div>
+              <div
+                *ngIf="submitted && f.floorNumber.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.floorNumber.errors.required">
+                  <b>Floor Number is required </b>
+                </div>
+                <div *ngIf="f.floorNumber.errors.pattern">
+                  <b>Floor Number must be minimun 1 maximum 50</b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label"> has garage </label>
+            <input type="text"  formControlName="hasGarage" class="form-control custom-form-control" />
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label">
+              Price<span style="color: tomato">*</span>
+            </label>
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                placeholder="minimum 1 maximum infinite"
+                class="form-control custom-form-control"
+                formControlName="price"
+                digitOnly
+                [ngClass]="{ 'is-invalid': submitted && f.price.errors }"
+              />
+              <div class="input-group-append">
+                <span
+                  [ngClass]="{
+                    'is-invalid': submitted && f.price.errors
+                  }"
+                  class="input-group-text custom-form-control"
+                  style="cursor: pointer; font-weight: bold"
+                  >S.R</span
+                >
+              </div>
+              <div
+                *ngIf="submitted && f.streetWidth.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.streetWidth.errors.required">
+                  <b> Price is Required </b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="form-control-label">
+              Ad title <span style="color: tomato">*</span>
+            </label>
+            <input
+              type="text"
+              class="form-control custom-form-control"
+              formControlName="adTitle"
+              [ngClass]="{ 'is-invalid': submitted && f.adTitle.errors }"
+            />
+            <div *ngIf="submitted && f.adTitle.errors" class="invalid-feedback">
+              <div *ngIf="f.adTitle.errors.required">
+                <b> Adtitle is required </b>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="form-control-label">
+              Details <span style="color: tomato">*</span>
+            </label>
+            <input
+              type="text"
+              class="form-control custom-form-control"
+              formControlName="details"
+              [ngClass]="{ 'is-invalid': submitted && f.details.errors }"
+            />
+            <div *ngIf="submitted && f.details.errors" class="invalid-feedback">
+              <div *ngIf="f.details.errors.required">
+                <b> Details is required </b>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label">
+             latitude<span style="color: tomato">*</span>
+            </label>
+            <div class="input-group mb-3">
+            
+              <input
+                type="text"
+                class="form-control custom-form-control"
+                formControlName="latitude"
+                digitOnly
+                [ngClass]="{ 'is-invalid': submitted && f.latitude.errors }"
+              />
+         
+              <div
+                *ngIf="submitted && f.latitude.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.latitude.errors.required">
+                  <b> latitude is required </b>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label">
+              Longitude <span style="color: tomato">*</span>
+            </label>
+            <div class="input-group mb-3">
+             
+              <input
+                type="text"
+                placeholder="minimum 1 max 50"
+                class="form-control"
+                formControlName="longitude"
+                digitOnly
+                [ngClass]="{
+                  'is-invalid': submitted && f.longitude.errors
+                }"
+              />
+            
+              <div
+                *ngIf="submitted && f.longitude.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.longitude.errors.required">
+                  <b> longitude is required </b>
+                </div>
+             
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label">
+             city<span style="color: tomato">*</span>
+            </label>
+            <div class="input-group mb-3">
+            
+              <input
+                type="text"
+                class="form-control custom-form-control"
+                formControlName="city"
+               
+                [ngClass]="{ 'is-invalid': submitted && f.city.errors }"
+              />
+         
+              <div
+                *ngIf="submitted && f.city.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.city.errors.required">
+                  <b> city is required </b>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label">
+              Region <span style="color: tomato">*</span>
+            </label>
+            <div class="input-group mb-3">
+             
+              <input
+                type="text"
+                class="form-control custom-form-control"
+                formControlName="region"
+               
+                [ngClass]="{
+                  'is-invalid': submitted && f.region.errors
+                }"
+              />
+            
+              <div
+                *ngIf="submitted && f.region.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.region.errors.required">
+                  <b> region is required </b>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label">
+             Address<span style="color: tomato">*</span>
+            </label>
+            <div class="input-group mb-3">
+            
+              <input
+                type="text"
+                class="form-control custom-form-control"
+                formControlName="address"
+               
+                [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
+              />
+         
+              <div
+                *ngIf="submitted && f.address.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.address.errors.required">
+                  <b> address is required </b>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="form-group">
+            <label class="form-control-label">
+              Receptions <span style="color: tomato">*</span>
+            </label>
+            <div class="input-group mb-3">
+             
+              <input
+                type="text"
+                class="form-control custom-form-control"
+                formControlName="receptions"
+               digitOnly
+                [ngClass]="{
+                  'is-invalid': submitted && f.receptions.errors
+                }"
+              />
+            
+              <div
+                *ngIf="submitted && f.receptions.errors"
+                class="invalid-feedback"
+              >
+                <div *ngIf="f.receptions.errors.required">
+                  <b> receptions is required </b>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row pt-4">
+        <div class="col text-right">
+          <button mat-raised-button style="background-color: #131111; margin-left: 10px;" color="accent">Next</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-card>

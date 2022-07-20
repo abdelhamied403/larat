@@ -1,0 +1,10 @@
+.custom-form-control {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  outline: none;
+  border-bottom: 2px solid lightgray;
+}
+.is-invalid {
+  border-color: #fb6340;
+  box-shadow: 2px 2px 10px #fb6340;
+}

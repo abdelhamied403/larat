@@ -1,0 +1,94 @@
+// Google Fonts
+@forward 'assets/scss/abstracts';
+@forward 'assets/scss/rtl';
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap');
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~ngx-toastr/toastr';
+// bootstrap style toast
+// or import a bootstrap 4 alert styled design (SASS ONLY)
+// should be after your bootstrap imports, it uses bs4 variables, mixins, functions
+
+
+// Variables Project
+:root {
+  --main-color: #312D2C;
+  --secondary-color: #2DCE89;
+  --ligth-color: #898989;
+  --dark-color: #1D252D;
+  --white-color: #FFFFFF;
+  --black-color: #000;
+  --background-color: #E5E5E5;
+  --background-secondary: rgba(94, 114, 228, 0.1);
+  --danger-color: #FD0505;
+  --danger-ligth-color: #FF375E;
+  --btn-main: #E8CE23;
+  --btn-main-50p: rgba(232, 206, 35, 0.5);
+  --btn-secondary: #5E72E4;
+  --box-shadow-light: 0px 7px 10px rgba(41, 38, 50, 0.03);
+  --box-shadow-heavy: 0px 40px 18px rgba(237, 237, 237, 0.25);
+  --border-radius-light: 4px;
+  --border-radius-heavy: 10px;
+}
+
+// Body Style 
+#body {
+  font-family: 'Cairo', sans-serif;
+  background-color: var(--background-color) !important;
+}
+
+.btn-main {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 12px;
+  padding: 20px 0;
+  background-color: var(--main-color);
+  color: var(--white-color);
+}
+
+.btn-main:hover {
+  box-shadow: none;
+  color: var(--white-color);
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.title-with-yellow {
+  position: relative;
+  width: max-content;
+  z-index: 1;
+
+  &:after {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin-inline: auto;
+    margin-inline-end: 0;
+    content: '';
+    z-index: -1;
+    background-color: var(--btn-main);
+    width: 50%;
+    height: 50%;
+  }
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}

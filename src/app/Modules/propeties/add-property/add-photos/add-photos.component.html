@@ -1,0 +1,184 @@
+<app-add-property-header
+  [headerItemClass]="propertyHeader"
+></app-add-property-header>
+
+<mat-card>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-3 mb-3" *ngFor="let file of fileList; let i = index">
+        <mat-card>
+          <button
+            mat-raised-button
+            mat-fab
+            color="default"
+            class="close-icon"
+            [mat-dialog-close]="true"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+          <img
+            mat-card-image
+            [src]="file.fileUrl"
+            alt="Photo of a Shiba Inu"
+          />
+        </mat-card>
+      </div>
+      <div class="align-items-center col-3" *ngIf="!isUploadPhoto">
+        <div class="imgMask">
+          <div class="imgMask-content">
+            <button
+              style="background-color: #0000007d; color: white"
+              mat-raised-button
+              mat-button
+            >
+              Browse
+            </button>
+          </div>
+        </div>
+        <input
+          type="file"
+          class="imgg"
+          name="files"
+          (change)="readURL($event)"
+        />
+      </div>
+      <button
+        mat-fab
+        *ngIf="isUploadPhoto"
+        (click)="isUploadPhoto = !isUploadPhoto"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <span style="font-weight: bold">Or Request LARAT Photography</span>
+        <span
+          style="font-weight: bold; color: rgb(229, 240, 21); padding-left: 2%"
+          >+200 S.R</span
+        >
+      </div>
+      <div class="col-lg-6 text-right">
+        <mat-slide-toggle [(ngModel)]="isLaratPhoto" ></mat-slide-toggle>
+      </div>
+    </div>
+    <form [formGroup]="addPhotoForm" (ngSubmit)="onSubmit()">
+      <div class="row align-items-center" *ngIf="isLaratPhoto">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="form-control-label"
+              >Number Of Photos<span style="color: tomato">*</span>
+            </label>
+            <input
+              nz-input
+              formControlName="numberOfPhotos"
+              class="form-control custom-form-control"
+              digitOnly
+              [ngClass]="{
+                'is-invalid': submitted && f.numberOfPhotos.errors
+              }"
+            />
+            <div
+              *ngIf="submitted && f.numberOfPhotos.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.numberOfPhotos.errors.required">
+                <b> Number of receptionis required </b>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center" *ngIf="isLaratPhoto">
+        <!-- <input type="hidden" formControlName="{{ isLaratPhoto }}" /> -->
+        <div class="col-lg-6">
+            <label class="form-control-label"
+              >Date<span style="color: tomato">*</span>
+            </label>
+            <nz-date-picker
+              formControlName="photoDate"
+              class="form-control custom-form-control"
+              type="date"
+              (ngModelChange)="onChange($event)"
+              [ngClass]="{
+                'is-invalid': submitted && f.photoDate.errors
+              }"
+            ></nz-date-picker>
+             <div
+              *ngIf="submitted && f.photoDate.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.photoDate.errors.required">
+                <b> PhotoDate is required </b>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-3 align-items-center">
+          <div class="form-group">
+            <label class="form-control-label"
+              >Time<span style="color: tomato">*</span>
+            </label>
+            <nz-time-picker
+              formControlName="photoTime"
+              type="date"
+              class="form-control custom-form-control"
+              [ngClass]="{
+                'is-invalid': submitted && f.photoTime.errors
+              }"
+            ></nz-time-picker>
+             <div
+              *ngIf="submitted && f.photoTime.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.photoTime.errors.required">
+                <b> photo Time is required </b>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 align-items-center">
+          <div class="form-group">
+            <label class="form-control-label"
+              >Duration<span style="color: tomato">*</span>
+            </label>
+            <input
+              type="text"
+              formControlName="duration"
+              class="form-control custom-form-control"
+              class="form-control custom-form-control"
+              [ngClass]="{
+                'is-invalid': submitted && f.duration.errors
+              }"
+            />
+             <div
+              *ngIf="submitted && f.duration.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.duration.errors.required">
+                <b> photo Time is required </b>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row align-items-center mt-3">
+        <div class="col-6 text-left">
+          <button mat-raised-button color="accent">Cancel</button>
+        </div>
+        <div class="col-6 text-right">
+          <button mat-raised-button mat-button (click)="previousPage()">
+            Previous
+          </button>
+          <button
+            mat-raised-button
+            style="background-color: #131111; margin-left: 10px"
+            color="accent"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</mat-card>

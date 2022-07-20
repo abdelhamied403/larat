@@ -1,0 +1,117 @@
+@use "src/styles" as styles;
+
+.img {
+  width: 100%;
+  height: calc(100vw * .3);
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+.image-container {
+  margin: 24px;
+  border-radius: 0.75rem;
+  position: relative;
+  @include styles.rwd('large-laptop'){
+    margin: 12px;
+  }
+}
+.search-tab {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 80px;
+  width: 80%;
+  margin-inline: auto;
+  height: 120px;
+  background-color: white;
+  border-radius: 1rem;
+  @include styles.rwd('large-laptop'){
+    bottom: 40px;
+    width: 95%;
+  }
+  @include styles.rwd('large-tablet'){
+    display: none;
+  }
+}
+.search-tabs-container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+.search-btn {
+  background-color: black;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2em;
+  @include styles.rwd('large-laptop') {
+    font-size: 1.5em;
+  }
+  border-end-end-radius: 1rem;
+  border-start-end-radius: 1rem;
+}
+.border-right-light {
+  border-inline-end: 1px solid gray;
+}
+.search-text-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  line-height: 1;
+  text-align: center;
+}
+.search-filter-container {
+  display: flex;
+  padding-top: 30px;
+  justify-content: space-between;
+  padding-inline: 24px;
+  align-items: start;
+  .icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #525f7f;
+    border-radius: 50%;
+  }
+}
+.text-x-large {
+  font-size: 1.5rem;
+  @include styles.rwd('large-laptop') {
+    font-size: 1.25rem;
+  }
+}
+.text-with-icon {
+  gap: 8px;
+  display: flex;
+  margin-bottom: 4px;
+}
+
+.flexible-search-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 40px;
+  display: none;
+  margin-inline: auto;
+  width: max-content;
+  cursor: pointer;
+  @include styles.rwd('large-tablet'){
+    display: block;
+  }
+}
+.mobile-search-icon {
+  background-color: var(--white-color);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .4);
+}
+.page-details {
+  margin: 24px;
+}

@@ -1,0 +1,57 @@
+.add_details {
+  padding: 1rem 3rem;
+  width: 180px !important;
+      text-align: center;
+  .firstTopDiv {
+    border: 1px solid #e8ce23;
+    border-radius: 5px;
+    .firstDivEle {
+      align-items: center;
+      text-align: center;
+      font-size: 32px;
+      padding: 1.5rem;
+      font-weight: bolder;
+      background-color: #e8ce23;
+      color: white;
+    }
+  }
+  .firstTextDiv {
+    color: #e8ce23;
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 9px;
+  }
+  .secondTopDiv {
+    border: 1px solid white;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgb(32 33 36 / 28%);
+    .secondDivEle {
+      font-size: 32px;
+      padding: 1.5rem;
+      font-weight: bolder;
+      background-color: white;
+      box-shadow: 0 2px 6px rgb(32 33 36 / 28%);
+    }
+  }
+  .secondDivText {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 9px;
+  }
+ 
+
+  .backgroundClor{
+    background-color: black !important;
+
+  };
+  .borderRadiusClor{
+     border: 1px solid black !important;
+    
+  };
+  .textColor{
+    color: black;
+  }
+}

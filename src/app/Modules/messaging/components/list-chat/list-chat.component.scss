@@ -1,0 +1,115 @@
+.sider {
+     margin-top: 20px;
+
+     .title {
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 20px;
+          color: #666666;
+          padding: 18px 28px;
+
+          .messag {
+               display: inline-block;
+               margin-inline-start: 8px;
+               border-radius: 8px;
+               background-color: var(--btn-main);
+               padding: 2px 6px;
+               width: 20px;
+               height: 20px;
+               font-size: 14px;
+               line-height: 16px;
+               text-align: center;
+               color: #FAFAFA;
+          }
+     }
+
+     .list-user {
+
+
+          .user {
+               cursor: pointer;
+               padding: 12px 28px;
+               border-top: 1px solid #f1f1f1;
+               background-color: var(--white-color);
+
+               .avatar-user {
+                    img {
+                         width: 60px;
+                         height: 60px;
+                         border-radius: 50%;
+                         filter: drop-shadow(0px 0px 8px rgba(18, 18, 18, 0.24));
+                         display: block;
+                         margin-inline-end: 8px;
+                    }
+               }
+
+               .name,
+               .m-user {
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 16px;
+                    color: #666666;
+                    margin-bottom: 5px;
+               }
+
+               .m-user {
+                    font-weight: 400;
+                    font-size: 14px;
+               }
+
+               .status {
+                    i {
+                         color: var(--btn-main);
+                         font-size: 8px;
+                         padding-bottom: 8px;
+                    }
+
+                    .time {
+                         font-weight: 300;
+                         font-size: 12px;
+                         line-height: 14px;
+                         color: #666666;
+                    }
+               }
+          }
+
+          .user.active {
+               background-color: #312D2C;
+               ;
+               border-top: none;
+
+               .avatar-user {
+                    img {
+                         box-shadow: none;
+                    }
+               }
+
+               .name,
+               .m-user {
+                    color: #FAFAFA;
+               }
+
+
+               .status {
+                    i {
+                         color: #FAFAFA;
+                    }
+
+                    .time {
+                         color: #FAFAFA;
+                    }
+               }
+          }
+     }
+
+
+}
+
+::ng-deep {
+     .ant-layout-sider-children {
+          background-color: var(--white-color);
+          border: 1px solid #F2F2F2;
+          box-shadow: 0px 7px 10px rgba(41, 38, 50, 0.03);
+          border-radius: var(--border-radius-light);
+     }
+}

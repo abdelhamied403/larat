@@ -1,0 +1,9 @@
+<nz-result
+  nzStatus="success"
+  [nzTitle]="getAlertMessage()"
+  nzSubTitle="later will be added."
+>
+  <div nz-result-extra>
+     <button mat-raised-button  style="background-color: #131111; margin-left: 10px;color:white" color="accent" (click) ="closeModal()"> {{getOkayButtonText()}}</button>
+  </div>
+</nz-result>

@@ -1,0 +1,72 @@
+<div class="header">
+    <div class="container-fluid">
+
+        <div class="header-body">
+            <div class="row align-items-center py-3">
+                <div class="col-lg-6 col-7">
+                    <h2 class="h2 text-black d-inline-block mb-0">28 Property</h2>
+                </div>
+
+                <div class="col-lg-6 text-white col-5 text-right">
+                    <a
+                            [routerLink]="['/properties/add-property']"
+                            class="btn btn-md btn-warning"
+                    >Create New
+                        <span class="btn-inner--icon">
+              <i class="fab fa-add"> </i>
+            </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="input-group input-group-merge">
+                            <input
+                                    class="form-control"
+                                    placeholder="Search Property"
+                                    type="text"
+                            />
+
+                            <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="fas fa-search"> </i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <div class="input-group input-group-merge">
+              <select
+                class="form-control"
+                placeholder="For Rent"
+                id="exampleFormControlSelect3"
+              ></select>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <div class="input-group input-group-merge">
+              <select
+                class="form-control"
+                placeholder="All type"
+                id="exampleFormControlSelect3"
+              ></select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <app-properties-card-list
+                class="custum-card"
+                *ngFor="let property of propertiesList"
+                [property]="property"
+        ></app-properties-card-list>
+    </div>
+  </div>
+</div>

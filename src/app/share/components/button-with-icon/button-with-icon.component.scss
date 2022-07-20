@@ -1,0 +1,17 @@
+.button-card {
+  border-radius: 1rem;
+  border: 1px solid #CCC;
+  height: 120px;
+  padding-inline: 2rem;
+  display: flex;
+  color: var(--btn-main);
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  cursor: pointer;
+  &:hover {
+    border: none;
+    color: var(--btn-main-50p);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
+  }
+}

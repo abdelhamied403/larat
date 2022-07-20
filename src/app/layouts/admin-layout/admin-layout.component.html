@@ -1,0 +1,75 @@
+<!-- Sidenav -->
+<div [dir]="language === 'ar'? 'rtl' : 'ltr'">
+    <mat-sidenav-container class="side-nav-container">
+        <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+            <div class="nav-links mobile-menu">
+                <div *ngFor="let menuItem of menuItems" [ngSwitch]="menuItem.type" class="link"
+                     [ngClass]="{'active': menuItem.isActive}">
+                            <span *ngIf="menuItem.icon" class="{{menuItem.icon}}"
+                                  [ngClass]="{'text-gray': menuItem.type === 'search'}"></span>
+                    <app-icon *ngIf="menuItem.customIcon" size="md" [icon]="menuItem.customIcon"></app-icon>
+                    <div *ngSwitchCase="'link'" [routerLink]="menuItem.path">{{menuItem.title}}</div>
+                    <input *ngSwitchCase="'search'" class="form-control search-input"
+                           (change)="onSearch($event)" placeholder="{{menuItem.title}}" type="text"/>
+                </div>
+            </div>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div class="app-container">
+                <nav id="navbar-main" class="app-menu">
+                    <div class="left-menu">
+                        <div class="logo-container">
+                            <app-icon [width]="104" [height]="18" icon="larat.svg"></app-icon>
+                        </div>
+                        <div class="nav-links">
+                            <div *ngFor="let menuItem of menuItems" [ngSwitch]="menuItem.type" class="link"
+                                 [ngClass]="{'active': menuItem.isActive}">
+                                           <span *ngIf="menuItem.icon" class="{{menuItem.icon}}"
+                                                 [ngClass]="{'text-gray': menuItem.type === 'search'}"></span>
+                                <app-icon *ngIf="menuItem.customIcon" size="md" [icon]="menuItem.customIcon"></app-icon>
+                                <div *ngSwitchCase="'link'"
+                                     [routerLink]="menuItem.path">{{menuItem.translate | translate}}</div>
+                                <input *ngSwitchCase="'search'" class="form-control search-input"
+                                       (change)="onSearch($event)" placeholder="{{menuItem.translate | translate}}"
+                                       type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-menu">
+                        <span class="fa-regular fa-bell text-xl"></span>
+                        <span>|</span>
+                        <div class="language-icon" (click)="changeLanguage(language == 'en'? 'ar': 'en')">
+                <span class="avatar avatar-xs rounded-circle">
+                <img alt="Image placeholder"
+                     src="{{language == 'en'? 'assets/img/sa-flag.png': 'assets/img/us-flag.png'}}"/>
+                </span>
+                            <span>{{language == 'en' ? 'ع' : 'En'}}</span>
+                        </div>
+                        <span>|</span>
+                        <div>
+                            <span [matMenuTriggerFor]="profileMenu" class="avatar avatar-sm rounded-circle">
+                                <img alt="Image placeholder" src="assets/img/theme/team-4.jpg"/>
+                            </span>
+                            <mat-menu #profileMenu="matMenu" xPosition="before">
+                                <button [routerLink]="['/user-profile']" mat-menu-item>My
+                                    Profile
+                                </button>
+                                <button mat-menu-item (click)="logOut()">Logout</button>
+                            </mat-menu>
+                        </div>
+                    </div>
+                    <div class="profile-collapse">
+                        <i (click)="sidenav.toggle()" class="fas fa-bars text-xl"></i>
+                        <div></div>
+                    </div>
+                </nav>
+                <div class="app-content">
+                    <router-outlet></router-outlet>
+                </div>
+                <div class="app-footer">
+                    <app-footer></app-footer>
+                </div>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

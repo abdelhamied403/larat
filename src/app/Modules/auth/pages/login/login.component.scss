@@ -1,0 +1,99 @@
+#login {
+     padding-block: 40px;
+     padding-inline: 30px;
+
+     .title {
+          font-weight: 500;
+          font-size: 25px;
+          line-height: 22px;
+          color: var(--dark-color);
+          margin-block: 60px 40px;
+     }
+
+     #form {
+          label {
+               color: var(--dark-color);
+               font-weight: 500;
+               font-size: 18px;
+               line-height: 22px;
+               margin-block-end: 10px;
+
+               .lable-ast {
+                    color: var(--danger-ligth-color);
+                    font-size: 22px;
+                    padding-inline-start: 12px;
+               }
+          }
+     }
+
+     .btn-main {
+          width: 100%;
+     }
+
+     .forget {
+          font-weight: 300;
+          font-size: 18px;
+          line-height: 22px;
+          color: var(--main-color);
+          cursor: pointer;
+     }
+
+     .btn-route {
+          border: 1px solid var(--black-color);
+          padding: 20px 0;
+          font-size: 17px;
+          line-height: 22px;
+          font-weight: 400;
+          color: var(--main-color);
+
+          .route {
+               color: var(--btn-main);
+               font-weight: 600;
+          }
+     }
+}
+
+::ng-deep {
+     .anticon {
+          font-size: 19px;
+     }
+
+     .ant-input-affix-wrapper {
+          border: 1px solid #E8E8E8;
+          border-radius: 10px 10px 0px 0px;
+          border-bottom: 2px solid #C1C1C1;
+          padding: 0px 17px;
+          margin-block-end: 12px;
+     }
+
+     .ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+          border: 1px solid #E8E8E8;
+          border-bottom: 2px solid #E8E8E8;
+          border-right-width: 0 !important;
+     }
+
+     .ant-steps-item-finish>.ant-steps-item-container>.ant-steps-item-content>.ant-steps-item-title::after {
+          background-color: #C1C1C1;
+     }
+
+     .ant-input-affix-wrapper:focus {
+          box-shadow: none;
+          border: 0;
+          border-right-width: 0 !important;
+          z-index: 0
+     }
+
+     .ant-input-affix-wrapper>input.ant-input {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 12px;
+          color: var(--black-color);
+          padding: 15px 13px;
+          position: relative;
+          transition: 0.2s;
+     }
+
+     .ant-input-affix-wrapper>input.ant-input.ng-valid {
+          border-bottom: 2px solid var(--secondary-color);
+     }
+}

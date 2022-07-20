@@ -1,0 +1,39 @@
+<nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs navbar-light bg-white" id="sidenav-main"
+  (mouseover)="onMouseEnterSidenav()" (mouseout)="onMouseLeaveSidenav()">
+  <perfect-scrollbar>
+    <div class="scrollbar-inner">
+      <div class="sidenav-header d-flex align-items-center">
+        <div class="ml-auto">
+          <!-- Sidenav toggler -->
+          <div class="sidenav-toggler d-none d-xl-block" data-action="sidenav-unpin" data-target="#sidenav-main"
+            (click)="minimizeSidebar()">
+            <div class="sidenav-toggler-inner">
+              <i class="sidenav-toggler-line"></i>
+              <i class="sidenav-toggler-line"></i>
+              <i class="sidenav-toggler-line"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar-inner">
+        <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+          <!-- Collapse header -->
+          <ul class="navbar-nav">
+            <li *ngFor="let menuitem of menuItems" class="nav-item">
+              <!--If is a single link-->
+              <a routerLinkActive="active" [routerLink]="[menuitem.path]" class="nav-link">
+                <i class="ni {{ menuitem.icontype }}"></i>
+                <span class="nav-link-text">{{ menuitem.title }}</span>
+              </a>
+              <!--If it have a submenu-->
+          
+              <!--Display the submenu items-->
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+    </div>
+  </perfect-scrollbar>
+
+</nav>

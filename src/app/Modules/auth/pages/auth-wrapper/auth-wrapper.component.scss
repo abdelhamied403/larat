@@ -1,0 +1,50 @@
+#auth-layout {
+     overflow-x: hidden;
+
+     .col-md-6:first-child {
+          background-color: var(--main-color);
+
+          .carousel-wrapper {
+               padding-block: 40px;
+               padding-inline: 30px;
+
+               img {
+                    display: block;
+                    margin: 0 auto;
+               }
+
+               .titel-carousel {
+                    font-weight: 700;
+                    font-size: 30px;
+                    line-height: 46px;
+                    color: var(--white-color);
+                    margin-block-start: 30px;
+               }
+
+               .content-carousel {
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 23px;
+                    color: #8E9AA0;
+               }
+          }
+     }
+
+}
+
+::ng-deep {
+
+     .ant-carousel .slick-slider .slick-list,
+     .ant-carousel .slick-slider .slick-track,
+     .ant-carousel .slick-initialized .slick-slide {
+          height: auto !important;
+     }
+
+     .ant-carousel .slick-dots-bottom {
+          position: static;
+          justify-content: start;
+          margin-block-start: 30px;
+          margin-left: 0;
+          margin-right: 0;
+     }
+}

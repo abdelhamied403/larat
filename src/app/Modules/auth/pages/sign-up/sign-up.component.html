@@ -1,0 +1,117 @@
+<div id="sign-up">
+     <nz-steps [nzCurrent]="current">
+          <nz-step nzTitle="account type"></nz-step>
+          <nz-step nzTitle="account Details"></nz-step>
+          <nz-step nzTitle="Otp"></nz-step>
+     </nz-steps>
+     <h3 class="title" *ngIf="current < 2">Welcome To Larat</h3>
+     <p class="desc" *ngIf="current == 1">Please choose an account type</p>
+     <div class="steps-content">
+          <div *ngIf="current == 0">
+               <form [formGroup]="signUpForm" id="form" data-number="0">
+                    <div *ngFor="let input of inputs">
+                         <label [for]="input.id">{{input.title}} <span class="lable-ast">*</span></label>
+                         <nz-input-group [nzPrefix]="prefixTemplateUser">
+                              <input [formControlName]="input.controlName" [type]="input.type" [id]="input.id" nz-input
+                                   autocomplete="off" />
+                         </nz-input-group>
+                         <ng-template #prefixTemplateUser>
+                              <img [src]="input.srcIcon" [alt]="input.title">
+                         </ng-template>
+                    </div>
+                    <div class="steps-action">
+                         <button class="btn btn-main" type="submit" [disabled]="signUpForm?.invalid" (click)="nextOne()"
+                              *ngIf="current < 2">
+                              <span>Next</span>
+                         </button>
+                    </div>
+
+               </form>
+          </div>
+          <div *ngIf="current == 1">
+               <div class="input-radio d-flex justify-content-between align-items-center">
+                    <label for="property-seeker" class="label-input one clickable">
+                         <img src="../../../../../assets/img/auth/icon/user-circle.svg" alt="user-circle">
+                         Property Seeker
+                    </label>
+                    <input type="radio" value="Property Seeker" id="property-seeker" name="account">
+                    <span class="checkmark"></span>
+               </div>
+               <div class="input-radio d-flex justify-content-between align-items-center">
+                    <label for="Company-advertiser" class="label-input two">
+                         <img src="../../../../../assets/img/auth/icon/Group.svg" alt="user-circle">
+                         Company property advertiser
+                    </label>
+                    <input type="radio" value="Company property advertiser" id="Company-advertiser" name="account">
+                    <span class="checkmark"></span>
+               </div>
+               <form id="form-advertiser" [formGroup]="signUpForm">
+                    <label for="reference-number">Authentication number <span class="lable-ast">*</span></label>
+                    <nz-input-group [nzPrefix]="prefixTemplateUser">
+                         <input formControlName="referenceNumber" type="text" id="reference-number" nz-input
+                              autocomplete="off" />
+                    </nz-input-group>
+                    <ng-template #prefixTemplateUser>
+                         <img src="../../../../../assets/img/auth/icon/lock.svg" alt="lock icon">
+                    </ng-template>
+                    <label for="registration-number"> Company registration number <span
+                              class="lable-ast">*</span></label>
+                    <nz-input-group [nzPrefix]="prefixTemplateUser2">
+                         <input formControlName="commercialNumber" type="text" id="registration-number" nz-input
+                              autocomplete="off" />
+                    </nz-input-group>
+                    <ng-template #prefixTemplateUser2>
+                         <img src="../../../../../assets/img/auth/icon/lock.svg" alt="lock icon">
+                    </ng-template>
+               </form>
+               <div class="input-radio d-flex justify-content-between align-items-center">
+                    <label for="individual-property" class="label-input three">
+                         <img src="../../../../../assets/img/auth/icon/user-circle.svg" alt="user-circle">
+                         Individual property advertiser
+                    </label>
+                    <span class="checkmark"></span>
+                    <input type="radio" value="Individual property advertiser" id="individual-property" name="account">
+               </div>
+               <form id="form-advertiser-Individual" [formGroup]="signUpForm">
+                    <label for="reference-number">Authentication number <span class="lable-ast">*</span></label>
+                    <nz-input-group [nzPrefix]="prefixTemplateUser1">
+                         <input formControlName="referenceNumber" type="text" id="reference-number" nz-input autocomplete="off" />
+                    </nz-input-group>
+                    <ng-template #prefixTemplateUser1>
+                         <img src="../../../../../assets/img/auth/icon/lock.svg" alt="lock icon">
+                    </ng-template>
+               </form>
+               <div class="steps-action">
+                    <button class="btn btn-main" (click)="submitForm()">
+                         <span>Next</span>
+                    </button>
+               </div>
+          </div>
+          <div *ngIf="current == 2">
+               <div id="otp">
+                    <h3 class="title">OTP</h3>
+                    <p class="desc">An activation code has been sent to your email</p>
+                    <div >
+                         <ng-otp-input (onInputChange)="onOtpChange($event)" id="otp-email" [config]="config"></ng-otp-input>
+                         <span class="resend" (click)="resendCode()" title="Resend Code">Resend code</span>
+                    </div>
+                    <div class="steps-action">
+                         <button class="btn btn-main mt-3" type="submit" (click)="submitOtpForm()" *ngIf="current === 2">
+                              <span>Finish</span>
+                         </button>
+                    </div>
+               </div>
+          </div>
+
+          <!-- <div class="steps-action">
+               <button class="btn btn-main" type="submit" (click)="submitForm()" (click)="next()" *ngIf="current < 2">
+                    <span>Next</span>
+               </button>
+               <button class="btn btn-main" (click)="done()" *ngIf="current === 2">
+                    <span>Done</span>
+               </button>
+          </div> -->
+     </div>
+
+
+</div>

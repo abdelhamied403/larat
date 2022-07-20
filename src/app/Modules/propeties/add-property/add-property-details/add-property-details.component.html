@@ -1,0 +1,127 @@
+<app-add-property-header
+  [headerItemClass]="propertyHeader"
+></app-add-property-header>
+
+<mat-card>
+  <form [formGroup]="addPropertyFormDetails" (ngSubmit)="onSubmit()">
+    <div class="card-body">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h3 style="font-weight: bold">Enable Reserve</h3>
+        </div>
+        <div class="col-lg-6 text-right">
+          <mat-slide-toggle formControlName="enableReserve" (change)="enableReserveEvt()"></mat-slide-toggle>
+        </div>
+      </div>
+      <div class="row align-items-center" *ngIf="isEnableReserve">
+        <div class="col-lg-6">
+           <div class="form-group">
+            <label class="form-control-label"
+              >Down Payment Amount<span style="color: tomato">*</span>
+            </label>
+            <input
+              nz-input
+              formControlName="downPayment"
+              class="form-control custom-form-control"
+              digitOnly
+              [ngClass]="{
+                'is-invalid': submitted && f.downPayment.errors
+              }"
+            />
+            <div
+              *ngIf="submitted && f.downPayment.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.downPayment.errors.required">
+                <b> Down Payment is required </b>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+        <div class="col-lg-6">
+     
+          <div class="form-group">
+            <label class="form-control-label"
+              > Expiry date<span style="color: tomato">*</span>
+            </label>
+             <input
+              nz-input digitOnly formControlName="downPaymentExpiryDate"  class="form-control custom-form-control" [ngClass]="{
+                'is-invalid': submitted && f.downPaymentExpiryDate.errors
+              }"/>
+      
+           
+            <div
+              *ngIf="submitted && f.downPaymentExpiryDate.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.downPaymentExpiryDate.errors.required">
+                <b> Down Payment Expiry Date is required </b>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center">
+        <mat-divider></mat-divider>
+      </div>
+      <div class="row align-items-center mt-2">
+        <div class="col-lg-6">
+          <h3 style="font-weight: bold">Enable Reserve</h3>
+        </div>
+        <div class="col-lg-6 text-right">
+          <mat-slide-toggle formControlName="negotiable"  (change)="enableNegotiable()"></mat-slide-toggle>
+        </div>
+      </div>
+      <div class="row align-items-center" *ngIf="isEnableNegociable">
+        <div class="col-lg-12">
+          <div class="form-group">
+            <label class="form-control-label">
+              Minimum Value <span style="color: tomato">*</span>
+            </label>
+            <div class="input-group mb-3">
+              <input type="text" digitOnly  nz-input formControlName="minimumPrice"  class="form-control custom-form-control" [ngClass]="{
+                'is-invalid': submitted && f.minimumPrice.errors
+              }"/>
+              <div class="input-group-append">
+                <span
+                  class="input-group-text custom-form-control"
+                  style="cursor: pointer; font-weight: bold; color: black"
+                  >S.R</span
+                >
+              </div>
+               <div
+              *ngIf="submitted && f.minimumPrice.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.minimumPrice.errors.required">
+                <b> Minimum price is required </b>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row align-items-center mt-3">
+        <div class="col-6 text-left">
+          <button mat-raised-button color="accent" (click)="previousPage()">
+            Cancel
+          </button>
+        </div>
+        <div class="col-6 text-right">
+          <button mat-raised-button mat-button (click)="previousPage()">
+            Previous
+          </button>
+          <button
+            mat-raised-button
+            style="background-color: #131111; margin-left: 10px"
+            color="accent"
+          >
+            Next
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-card>

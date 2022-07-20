@@ -1,0 +1,106 @@
+<div class="header-body">
+  <div class="row align-items-center" style="justify-content: center">
+    <div class="add_details">
+      <div
+        [class]="headerItemClass.firstTopDiv"
+        [ngClass]="[headerItemClass.showFirstIcon ? 'borderRadiusClor' : '']"
+      >
+        <div
+          [class]="headerItemClass.firstDivEle"
+          [ngClass]="[headerItemClass.showFirstIcon ? 'backgroundClor' : '']"
+        >
+          <i
+            *ngIf="headerItemClass.showFirstIcon"
+            class="fa fa-check"
+            style="color: white"
+            aria-hidden="true"
+          ></i>
+          <span *ngIf="!headerItemClass.showFirstIcon">01</span>
+        </div>
+      </div>
+      <div
+        [class]="headerItemClass.firstTextDiv"
+        [ngClass]="[headerItemClass.showFirstIcon ? 'textColor' : '']"
+      >
+        Ad Details
+      </div>
+    </div>
+    <div class="add_details">
+      <div
+        [class]="headerItemClass.secondTopDiv"
+        [ngClass]="[headerItemClass.showSecIcon ? 'borderRadiusClor' : '']"
+      >
+        <div
+          [class]="headerItemClass.secondDivEle"
+          [ngClass]="[headerItemClass.showSecIcon ? 'backgroundClor' : '']"
+        >
+          <i
+            *ngIf="headerItemClass.showSecIcon"
+            class="fa fa-check"
+            style="color: white"
+            aria-hidden="true"
+          ></i>
+          <span *ngIf="!headerItemClass.showSecIcon">02</span>
+        </div>
+      </div>
+      <div
+        [class]="headerItemClass.secondDivText"
+        [ngClass]="[headerItemClass.showSecIcon ? 'textColor' : '']"
+      >
+        Photos
+      </div>
+    </div>
+
+    <div class="add_details">
+      <div
+        [class]="headerItemClass.thirdTopDiv"
+        [ngClass]="[headerItemClass.showThirdIcon ? 'borderRadiusClor' : '']"
+      >
+        <div
+          [class]="headerItemClass.thirdDivEle"
+          [ngClass]="[headerItemClass.showThirdIcon ? 'backgroundClor' : '']"
+        >
+          <i
+            *ngIf="headerItemClass.showThirdIcon"
+            class="fa fa-check"
+            style="color: white"
+            aria-hidden="true"
+          ></i>
+          <span *ngIf="!headerItemClass.showThirdIcon">03</span>
+        </div>
+      </div>
+      <div
+        [class]="headerItemClass.thirdDivText"
+        [ngClass]="[headerItemClass.showSecIcon ? 'textColor' : '']"
+      >
+        Details
+      </div>
+    </div>
+
+    <div class="add_details">
+      <div
+        [class]="headerItemClass.fourthTopDiv"
+        [ngClass]="[headerItemClass.showFourthIcon ? 'borderRadiusClor' : '']"
+      >
+        <div
+          [class]="headerItemClass.fourthDivEle"
+          [ngClass]="[headerItemClass.showFourthIcon ? 'backgroundClor' : '']"
+        >
+          <i
+            *ngIf="headerItemClass.showFourthIcon"
+            class="fa fa-check"
+            style="color: white"
+            aria-hidden="true"
+          ></i>
+          <span *ngIf="!headerItemClass.showFourthIcon">04</span>
+        </div>
+      </div>
+      <div
+        [class]="headerItemClass.fourthDivText"
+        [ngClass]="[headerItemClass.showFourthIcon ? 'textColor' : '']"
+      >
+        Review
+      </div>
+    </div>
+  </div>
+</div>

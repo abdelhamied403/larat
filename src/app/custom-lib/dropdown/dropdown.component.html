@@ -1,0 +1,7 @@
+
+<div class="form-group">
+  <label class="form-control-label">{{label}} <span *ngIf="isMandatory" style="color: tomato">*</span> </label>
+  <select class="form-control custom-form-control"  (change)="emitSelection($event)" >
+    <option  *ngFor="let option of options; let i=index" [selected]="selectedValue" [value]="option.key">{{ option.value }}</option>
+  </select>
+</div>
